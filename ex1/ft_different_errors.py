@@ -1,5 +1,6 @@
 """Handle different errors."""
 
+
 def garden_operations(operation_type: str) -> None:
     """Perform operations that might raise different errors."""
     if operation_type == "value":
@@ -14,6 +15,7 @@ def garden_operations(operation_type: str) -> None:
     elif operation_type == "multiple":
         value = int("maybe_bad_input")
         _ = value / 0
+
 
 def test_error_types() -> None:
     """Test all error types."""

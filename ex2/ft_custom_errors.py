@@ -1,13 +1,17 @@
 """Raise Custom errors."""
 
+
 class GardenError(Exception):
     """Custom exception for errors in the garden."""
+
 
 class PlantError(GardenError):
     """Custom exception for errors with plants."""
 
+
 class WaterError(GardenError):
     """Custom exception for errors with water."""
+
 
 print("=== Custom Garden Errors Demo ===")
 print("\nTesting PlantError...")
@@ -22,7 +26,6 @@ try:
     raise WaterError(water_error)
 except WaterError as e:
     print(f"Caught WaterError: {e}")
-print("\nTesting catching all garden errors...")
 
 print("\nTesting catching all garden errors...")
 try:
@@ -34,3 +37,5 @@ try:
     raise WaterError(water_error)
 except GardenError as e:
     print(f"Caught a garden error: {e}")
+
+print("\nAll custom error types work correctly!")

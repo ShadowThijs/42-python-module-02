@@ -1,26 +1,25 @@
-"""First Exception handling."""
+"""Agricultural data validation.
+
+Basic exception handling for sensor temperature input.
+"""
 
 
-def check_temperature(temp_str: str) -> None:
-    """Gracefully check temperature."""
-    print(f"\nTesting temperature: {temp_str}")
-    lower_bound: int = 0
-    upper_bound: int = 40
-    try:
-        int_str: int = int(temp_str)
-        if (int_str > lower_bound and int_str < upper_bound):
-            print(f"Temperature {int_str}°C is perfect for plants!")
-        elif (int_str > upper_bound):
-            print(f"Error: {int_str}°C is too hot for plants (max 40°C)")
-        elif (int_str < 0):
-            print(f"Error: {int_str}°C is too cold for plants (min 0°C)")
-    except ValueError:
-        print(f"Error: '{temp_str}' is not a valid number")
+def input_temperature(temp_str: str) -> int:
+    """Convert temperature string to integer."""
+    return int(temp_str)
 
 
-print("=== Garden Temperature Checker ===")
-check_temperature("25")
-check_temperature("abc")
-check_temperature("100")
-check_temperature("-50")
-print("\nAll tests completed - program didn't crash!")
+def test_temperature() -> None:
+    """Test input_temperature with valid and invalid inputs."""
+    print("=== Garden Temperature ===")
+    for temp_str in ["25", "abc"]:
+        print(f"Input data is '{temp_str}'")
+        try:
+            temp: int = input_temperature(temp_str)
+            print(f"Temperature is now {temp}°C")
+        except Exception as e:
+            print(f"Caught input_temperature error: {e}")
+    print("All tests completed - program didn't crash!")
+
+
+test_temperature()
